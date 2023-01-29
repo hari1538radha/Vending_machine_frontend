@@ -1,11 +1,11 @@
-// import Admin from "./Components/Pages/Admin";
+import Admin from "./Components/Pages/Admin";
+import FoodList from "./Components/Pages/foodList";
 import Navbar from "./Components/Navbar";
-import Login from "./Components/Login";
 function App() {
   return (
     <div>
-      <Navbar />
-      {/* <Admin/> */}
+      <FoodList />
+        <Navbar />
     </div>
   );
 }
