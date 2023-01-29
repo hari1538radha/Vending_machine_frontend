@@ -144,7 +144,7 @@ function FoodList() {
 
   return (
     <div>
-      <div className="font-mono text-2xl text-center m-[10px]">Grab a snack🍟</div>
+      <div className="font-mono text-poppins text-2xl text-center m-[10px]">Grab a snack🍟</div>
       <div className="flex flex-col place-items-center w-screen ">
         {foodItems.length &&
           foodItems.map((items, indexRow) => (
@@ -153,7 +153,7 @@ function FoodList() {
               id={indexRow}
               onClick={dropDownOnclick}
             >
-              <div className="flex flex-row justify-between h-[50px] border-4 py-[10px] rounded-xl ">
+              <div className="flex flex-row justify-between h-[50px] border-2 border-stone-400 py-[10px] rounded-xl ">
                 <div className="flex flex-row h-[30px]">
                   <span className="material-symbols-outlined">
                     chevron_right
@@ -168,7 +168,7 @@ function FoodList() {
                     className="flex flex-col justify-center items-center"
                     id={"ROW " + indexRow + " COL " + indexCol}
                   >
-                    <div className="flex flex-row w-[80vw]  rounded-xl bg-[#0081C9] p-[10px] my-2">
+                    <div className="flex flex-row w-[80vw]  rounded-xl bg-gradient-to-b from-blue-100 via-white to-emerald-50 p-[10px] my-2">
                       <img
                         src="https://images.unsplash.com/photo-1566478989037-eec170784d0b?ixlib=rb-4.0.3 "
                         className="rounded-xl max-w-[100px] max-h-[100px]"
@@ -177,11 +177,11 @@ function FoodList() {
                         <div className="flex flex-row justify-between">
                           <div className="text-2xl">Lays</div>
                           <div className="flex flex-row justify-evenly place-content-center">
-                            <button className="bg-green-400 w-[30px] rounded-md">
+                            <button className="bg-green-200 w-[30px] rounded-md">
                               -
                             </button>
                             <div className="w-[20px] text-center">0</div>
-                            <button className="bg-red-500 w-[30px] rounded-md">
+                            <button className="bg-red-300 w-[30px] rounded-md">
                               +
                             </button>
                           </div>
@@ -201,7 +201,7 @@ function FoodList() {
           ))}
       </div>
       <div className="grid place-items-center">
-        <button className="w-[200px] h[50px]  p-[5px] m-[10px] bg-slate-500 rounded-md bg-[#FA7070]">
+        <button className="w-[200px] h[50px]  p-[5px] m-[10px] bg-slate-500 rounded-md bg-[#f57e7ea8]">
           Checkout
         </button>
       </div>
