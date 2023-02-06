@@ -1,10 +1,26 @@
 import React from "react";
-import Navbar from "../Components/Navbar";
+import { useEffect } from "react";
+import Navbar from "../../Components/Navbar";
 import { Link } from "react-router-dom";
-const Login = () => {
+import { Login } from "../../Store/Slice/Login";
+import { useDispatch, useSelector } from "react-redux";
+
+const LoginPanel = () => {
+  const data = {
+    AdminName: "admin",
+    Password: "admi2n",
+  };
+  const dispatch = useDispatch();
+  const handelLogin = () => {
+    console.log("HI");
+  };
+  useEffect(() => {
+    dispatch(Login(data));
+  }, []);
+
   return (
     <div className="">
-      <Navbar/>
+      <Navbar />
       <div className="relative top-0 font-poppins mb-11">
         <div className="  flex flex-col  border-2  border-neutral-400 bg-white items-center absolute  rounded-xl gap-y-4 w-[410px] left-36 top-10">
           <h1 className="text-3xl mt-51 font-bold text-[42px] font-poppins text-neutral-700">
@@ -13,7 +29,7 @@ const Login = () => {
           </h1>
           <div className="flex flex-col text-left">
             <label className="text-slate-600 text-xl font-medium">
-            Admin_ID
+              Admin_ID
             </label>
             <input
               className="w-[330px] border-2  border-neutral-200 pl-[20px] bg-white h-[52px] rounded-[100px]"
@@ -33,7 +49,11 @@ const Login = () => {
               required
             ></input>
           </div>
-          <Link to="/adminpanel" className="bg-gradient-to-tr from-purple-300 to-pink-200 text-center flex items-center justify-center text-medium text-xl text-slate-700  mb-[52px] text-white w-[330px] h-[52px] mt-[40px] rounded-full ">
+          <Link
+            onClick={handelLogin}
+            to="/adminpanel"
+            className="bg-gradient-to-tr from-purple-300 to-pink-200 text-center flex items-center justify-center text-medium text-xl text-slate-700  mb-[52px] text-white w-[330px] h-[52px] mt-[40px] rounded-full "
+          >
             Log In
           </Link>
         </div>
@@ -43,4 +63,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginPanel;

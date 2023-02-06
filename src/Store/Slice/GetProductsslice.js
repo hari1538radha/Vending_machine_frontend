@@ -1,14 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { axio } from "../../Components/Config/Config";
 
-export const GetProductsInfo = createAsyncThunk(
-  "productsinfo",
-  async (data) => {
-    return fetch(`https://nice-pink-chinchilla-belt.cyclic.app/api/products`, {
-      method: "GET",
-      headers: {},
-    }).then((response) => response.json());
-  }
-);
+export const GetProductsInfo = createAsyncThunk("productsinfo", async () => {
+  return axio.get("/api/products");
+});
 const products = createSlice({
   name: "productinfo",
   initialState: {
