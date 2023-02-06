@@ -4,6 +4,7 @@ import Navbar from "../../Components/Navbar";
 import { Link } from "react-router-dom";
 import { Login } from "../../Store/Slice/Login";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const LoginPanel = () => {
   const data = {
@@ -11,12 +12,22 @@ const LoginPanel = () => {
     Password: "admin",
   };
   const dispatch = useDispatch();
-  const handelLogin = () => {
-    console.log("HI");
-  };
+  const navigate = useNavigate();
+  
   useEffect(() => {
     dispatch(Login(data));
   }, []);
+  const {LoginData,LoginLoading} = useSelector(state => state.LoginInfo)
+  console.log(LoginData)
+  const handelLogin = (e) => {
+    e.preventDefault()
+    // console.log(e.target.elements[0].value)
+    if(LoginData.data.status == 200)
+    {
+      console.log(LoginData.data.status)
+      navigate("/adminpanel")
+    }
+  };
 
   return (
     <div className="">
@@ -49,13 +60,12 @@ const LoginPanel = () => {
               required
             ></input>
           </div>
-          <Link
+          <button
             onClick={handelLogin}
-            to="/adminpanel"
             className="bg-gradient-to-tr from-purple-300 to-pink-200 text-center flex items-center justify-center text-medium text-xl text-slate-700  mb-[52px] text-white w-[330px] h-[52px] mt-[40px] rounded-full "
           >
             Log In
-          </Link>
+          </button>
         </div>
       </div>
       <div></div>
