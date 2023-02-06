@@ -1,207 +1,187 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
+import laysImg from "./lays.png";
 
 function FoodList() {
-  const order = useState({
-    row1: {
-      slot1: 0,
-      slot2: 0,
-      slot3: 0,
-      slot4: 0,
-      slot5: 0,
-      slot6: 0,
-      slot7: 0,
-      slot8: 0,
-      slot9: 0,
-      slot10: 0,
-    },
-  });
-  const foodItems = [
+  const available = [
     [
       {
-        item: "Lays",
-        imageUrls:
-          "https://images.unsplash.com/photo-1566478989037-eec170784d0b?ixlib=rb-4.0.3",
-        price: 40,
-        slot: 1,
-        available: 0,
+        Price: 50,
+        imageUrl: laysImg,
         order: 0,
       },
       {
-        item: "Lays",
-        imageUrls:
-          "https://images.unsplash.com/photo-1566478989037-eec170784d0b?ixlib=rb-4.0.3",
-        price: 40,
-        slot: 1,
-        available: 10,
+        Price: 50,
+        imageUrl: laysImg,
         order: 0,
       },
       {
-        item: "Lays",
-        imageUrls:
-          "https://images.unsplash.com/photo-1566478989037-eec170784d0b?ixlib=rb-4.0.3",
-        price: 40,
-        slot: 1,
-        available: 10,
+        Price: 50,
+        imageUrl: laysImg,
+        order: 0,
+      },
+      {
+        Price: 50,
+        imageUrl: laysImg,
+        order: 0,
+      },
+      {
+        Price: 50,
+        imageUrl: laysImg,
         order: 0,
       },
     ],
     [
       {
-        item: "Lays",
-        imageUrls:
-          "https://images.unsplash.com/photo-1566478989037-eec170784d0b?ixlib=rb-4.0.3",
-        price: 40,
-        slot: 1,
-        available: 10,
+        Price: 50,
+        imageUrl: laysImg,
         order: 0,
       },
       {
-        item: "Lays",
-        imageUrls:
-          "https://images.unsplash.com/photo-1566478989037-eec170784d0b?ixlib=rb-4.0.3",
-        price: 40,
-        slot: 1,
-        available: 10,
+        Price: 50,
+        imageUrl: laysImg,
         order: 0,
       },
       {
-        item: "Lays",
-        imageUrls:
-          "https://images.unsplash.com/photo-1566478989037-eec170784d0b?ixlib=rb-4.0.3",
-        price: 40,
-        slot: 1,
-        available: 10,
-        order: 0,
-      },
-    ],
-    [
-      {
-        item: "Lays",
-        imageUrls:
-          "https://images.unsplash.com/photo-1566478989037-eec170784d0b?ixlib=rb-4.0.3",
-        price: 40,
-        slot: 1,
-        available: 10,
+        Price: 50,
+        imageUrl: laysImg,
         order: 0,
       },
       {
-        item: "Lays",
-        imageUrls:
-          "https://images.unsplash.com/photo-1566478989037-eec170784d0b?ixlib=rb-4.0.3",
-        price: 40,
-        slot: 1,
-        available: 10,
+        Price: 50,
+        imageUrl: laysImg,
         order: 0,
       },
       {
-        item: "Lays",
-        imageUrls:
-          "https://images.unsplash.com/photo-1566478989037-eec170784d0b?ixlib=rb-4.0.3",
-        price: 40,
-        slot: 1,
-        available: 10,
+        Price: 50,
+        imageUrl: laysImg,
         order: 0,
       },
     ],
     [
       {
-        item: "Lays",
-        imageUrls:
-          "https://images.unsplash.com/photo-1566478989037-eec170784d0b?ixlib=rb-4.0.3",
-        price: 40,
-        slot: 1,
-        available: 10,
+        Price: 50,
+        imageUrl: laysImg,
         order: 0,
       },
       {
-        item: "Lays",
-        imageUrls:
-          "https://images.unsplash.com/photo-1566478989037-eec170784d0b?ixlib=rb-4.0.3",
-        price: 40,
-        slot: 1,
-        available: 10,
+        Price: 50,
+        imageUrl: laysImg,
         order: 0,
       },
       {
-        item: "Lays",
-        imageUrls:
-          "https://images.unsplash.com/photo-1566478989037-eec170784d0b?ixlib=rb-4.0.3",
-        price: 40,
-        slot: 1,
-        available: 10,
+        Price: 50,
+        imageUrl: laysImg,
+        order: 0,
+      },
+      {
+        Price: 50,
+        imageUrl: laysImg,
+        order: 0,
+      },
+      {
+        Price: 50,
+        imageUrl: laysImg,
+        order: 0,
+      },
+    ],
+    [
+      {
+        Price: 50,
+        imageUrl: laysImg,
+        order: 0,
+      },
+      {
+        Price: 50,
+        imageUrl: laysImg,
+        order: 0,
+      },
+      {
+        Price: 50,
+        imageUrl: laysImg,
+        order: 0,
+      },
+      {
+        Price: 50,
+        imageUrl: laysImg,
+        order: 0,
+      },
+      {
+        Price: 50,
+        imageUrl: laysImg,
         order: 0,
       },
     ],
   ];
-  const dropdown = [0, 0, 0, 0];
-
-  const dropDownOnclick = () => {
-    let tags = document.querySelectorAll('[id="/ROW1>*/"]');
-
-    console.log(tags);
+  const list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  const itemOnclick = (e) => {
+    var operaionId = e.target.className.split(" ");
+    operaionId = operaionId[operaionId.length - 1];
+    var operaionElement = document.getElementById(operaionId);
+    const tempVariable = operaionElement.style.visibility;
+    operaionElement.style.visibility =
+      tempVariable === "hidden" ? "visible" : "visible";
   };
-
   return (
-    <div>
-      <div className="font-mono text-poppins text-2xl text-center m-[10px]">Grab a snack🍟</div>
-      <div className="flex flex-col place-items-center w-screen ">
-        {foodItems.length &&
-          foodItems.map((items, indexRow) => (
-            <div
-              className="rounded-md  w-[80vw] my-[5px] "
-              id={indexRow}
-              onClick={dropDownOnclick}
-            >
-              <div className="flex flex-row justify-between h-[50px] border-2 border-stone-400 py-[10px] rounded-xl ">
-                <div className="flex flex-row h-[30px]">
-                  <span className="material-symbols-outlined">
-                    chevron_right
-                  </span>
-                  <div className="">row {indexRow + 1}</div>
-                </div>
-                <div className="mr-[5px]">Total:50</div>
-              </div>
-              {items.length &&
-                items.map((item, indexCol) => (
-                  <div
-                    className="flex flex-col justify-center items-center"
-                    id={"ROW " + indexRow + " COL " + indexCol}
-                  >
-                    <div className="flex flex-row w-[80vw]  rounded-xl bg-gradient-to-b from-blue-100 via-white to-emerald-50 p-[10px] my-2">
-                      <img
-                        src="https://images.unsplash.com/photo-1566478989037-eec170784d0b?ixlib=rb-4.0.3 "
-                        className="rounded-xl max-w-[100px] max-h-[100px]"
-                      />
-                      <div className="ml-[3vw] w-full">
-                        <div className="flex flex-row justify-between">
-                          <div className="text-2xl">Lays</div>
-                          <div className="flex flex-row justify-evenly place-content-center">
-                            <button className="bg-green-200 w-[30px] rounded-md">
-                              -
-                            </button>
-                            <div className="w-[20px] text-center">0</div>
-                            <button className="bg-red-300 w-[30px] rounded-md">
-                              +
-                            </button>
-                          </div>
-                        </div>
-                        <div>
-                          <span>&#8377;</span>50
-                        </div>
-                        <div className="flex flex-row justify-between">
-                          <div className="">slot: {item.slot}</div>
-                          <div>Available:30</div>
-                        </div>
-                      </div>
-                    </div>
+    <div className="border-[10px] border-black w-[100vw] rounded-md">
+      <div className="text-center bg-black p-[5px] text-white  text-2xl">
+        <i>Grab a Snack 🍟</i>
+      </div>
+      <div className="bg-green-400 text-center p-[10px] m-[15px] rounded-md">
+        Total : <span>&#8377;</span>50
+      </div>
+      <div className="">
+        {available.length &&
+          available.map((rows, rowIndex) => (
+            <div className="flex">
+              {rows.map((items, colIndex) => (
+                <div
+                  className={
+                    "grid place-items-center border-b-[3px] w-[20vw] relative p-[5px] mb-[20px] " +
+                    "row_" +
+                    rowIndex +
+                    "col_" +
+                    colIndex
+                  }
+                  onClick={(event) => itemOnclick(event)}
+                >
+                  <div className="absolute  top-[-10px] right-[-7px] bg-yellow-300 rounded-xl px-[10px]">
+                    {items.order}
                   </div>
-                ))}
+                  <img
+                    src={items.imageUrl}
+                    className={
+                      "w-[70px] h-[70px] " +
+                      "row_" +
+                      rowIndex +
+                      "col_" +
+                      colIndex
+                    }
+                    onClick={(event) => itemOnclick(event)}
+                  />
+                  <div>
+                    <span>&#8377;</span>
+                    {items.Price}
+                  </div>
+                  <div
+                    className="absolute"
+                    style={{ visibility: "hidden" }}
+                    id={"row_" + rowIndex + "col_" + colIndex}
+                  >
+                    <button className="p-[5px] bg-red-400 rounded-md w-[30px] mr-[5px]">
+                      -
+                    </button>
+                    <button className="p-[5px] bg-green-400 rounded-md w-[30px]">
+                      +
+                    </button>
+                  </div>
+                </div>
+              ))}{" "}
+              c
             </div>
           ))}
       </div>
-      <div className="grid place-items-center">
-        <button className="w-[200px] h[50px]  p-[5px] m-[10px] bg-slate-500 rounded-md bg-[#f57e7ea8]">
+      <div className="grid place-items-center ">
+        <button className="bg-green-400 p-[10px] m-[10px] rounded-xl">
           Checkout
         </button>
       </div>
