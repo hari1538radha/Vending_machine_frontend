@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 const LoginPanel = () => {
   const data = {
     AdminName: "admin",
-    Password: "admi2n",
+    Password: "admin",
   };
   const dispatch = useDispatch();
   const handelLogin = () => {
