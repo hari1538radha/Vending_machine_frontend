@@ -1,6 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../Components/Navbar";
+import { useSelector, useDispatch } from "react-redux";
+import { PostProductInfo } from "../Store/Slice/PostProductslice";
 const Admin = () => {
+  const dispatch = useDispatch();
+  const data = {
+    SlotName: "Lays123",
+    ProductName: "lays 123maslaa",
+    Price: 100,
+    Catogory: "lays",
+    Quantity: 999,
+    ProductManufactureDate: "5/1/2023",
+    ProductExpiryDate: "10/2/2024",
+    ImageURL:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNR90f1W_alk92f69N-ne6a8NAcTAviRzDdRR_heZS&s",
+  };
+
+  const handlePostProduct = () => {
+    dispatch(PostProductInfo(data));
+  };
+
   const fields = [
     ["Slot Name *", "eg. Lays ,haldirams*", "Text"],
     ["Product Name *", "Product name *", "Text"],
@@ -84,7 +103,10 @@ const Admin = () => {
           </div>
 
           <div className="md:flex md:justify-center   ">
-            <button className="bg-gradient-to-b rounded-[5px] from-[#adaee0c3] to-[#e6c9e0af] border-2 border-stone-500 text-black w-[760px] h-[46px] md:w-[400px] sl:w-[300px] sm:text-[9px] sm:w-[150px] sm:h-[30px] ">
+            <button
+              onClick={handlePostProduct}
+              className="bg-gradient-to-b rounded-[5px] from-[#adaee0c3] to-[#e6c9e0af] border-2 border-stone-500 text-black w-[760px] h-[46px] md:w-[400px] sl:w-[300px] sm:text-[9px] sm:w-[150px] sm:h-[30px] "
+            >
               Upload
             </button>
           </div>

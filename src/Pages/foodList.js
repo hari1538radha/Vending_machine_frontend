@@ -1,7 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import laysImg from "./lays.png";
+import { useDispatch,useSelector } from "react-redux";
+import { GetProductsInfo } from "../Store/Slice/GetProductsslice";
 
 function FoodList() {
+  const dispatch = useDispatch();
+
+ useEffect(() => {
+ dispatch(GetProductsInfo())
+ }, [])
+ console.log()
+ 
   const available = [
     [
       {
