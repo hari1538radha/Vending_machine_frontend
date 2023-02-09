@@ -9,8 +9,8 @@ function FoodList() {
  useEffect(() => {
  dispatch(GetProductsInfo())
  }, [])
- console.log()
- 
+const{productsData,productLoading} = useSelector((state) =>  state.ProductInfo)
+ console.log(productsData?.data?.data)
   const available = [
     [
       {

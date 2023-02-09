@@ -180,7 +180,8 @@ const Admin = () => {
                   name="file_upload"
                   className="hidden"
                   onChange={HandelFilePath}
-                  accept=".pdf"
+                  accept="image/png, image/jpeg, images/jpg"
+                 
                 />
               </label>
             </div>
