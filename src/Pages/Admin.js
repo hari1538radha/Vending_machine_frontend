@@ -37,6 +37,7 @@ const Admin = () => {
     myBucket
       .putObject(params)
       .on("success", (pro) => {
+        if(pro?.request?.httpRequest?.stream?.responseURL)
         setLink(pro?.request?.httpRequest?.stream?.responseURL);
       })
       .on("httpUploadProgress", (evt) => {
