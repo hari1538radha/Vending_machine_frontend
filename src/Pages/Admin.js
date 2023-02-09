@@ -20,7 +20,7 @@ const Admin = () => {
 
     AWS.config.update({
       accessKeyId: accessKeyId,
-      secretAccessKey:secretAccessKeys
+      secretAccessKey: secretAccessKeys,
     });
 
     const myBucket = new AWS.S3({
@@ -37,8 +37,8 @@ const Admin = () => {
     myBucket
       .putObject(params)
       .on("success", (pro) => {
-        if(pro?.request?.httpRequest?.stream?.responseURL)
-        setLink(pro?.request?.httpRequest?.stream?.responseURL);
+        if (pro?.request?.httpRequest?.stream?.responseURL)
+          setLink(pro?.request?.httpRequest?.stream?.responseURL);
       })
       .on("httpUploadProgress", (evt) => {
         console.log(evt);
@@ -181,7 +181,6 @@ const Admin = () => {
                   className="hidden"
                   onChange={HandelFilePath}
                   accept="image/png, image/jpeg, images/jpg"
-                 
                 />
               </label>
             </div>
