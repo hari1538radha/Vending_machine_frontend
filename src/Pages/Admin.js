@@ -1,43 +1,120 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../Components/Navbar";
 import { useSelector, useDispatch } from "react-redux";
 import { PostProductInfo } from "../Store/Slice/PostProductslice";
+import AWS from "aws-sdk";
 const Admin = () => {
   const dispatch = useDispatch();
-  const data = {
-    SlotName: "Lays123",
-    ProductName: "lays 123maslaa",
-    Price: 100,
-    Catogory: "lays",
-    Quantity: 999,
-    ProductManufactureDate: "5/1/2023",
-    ProductExpiryDate: "10/2/2024",
-    ImageURL:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNR90f1W_alk92f69N-ne6a8NAcTAviRzDdRR_heZS&s",
-  };
 
-  const handlePostProduct = () => {
+  const [progress, setProgress] = useState(0);
+  const [filename, setFileName] = useState();
+  const [resumeUploadLink, setLink] = useState("");
+
+  const HandelFilePath = (e) => {
+    const file = e.target.files[0];
+    const fileName = e.target.files[0].name;
+    setFileName(fileName);
+
+    AWS.config.update({
+      accessKeyId: REACT_APP_AWS_ACCESS_KEY_ID,
+      secretAccessKey:REACT_APP_AWS_SECRET_ACCESS_KEY
+    });
+
+    const myBucket = new AWS.S3({
+      params: { Bucket: REACT_APP_S3_BUCKET },
+      region: "eu-west-2",
+    });
+    const params = {
+      ACL: "public-read",
+      Body: file,
+      Bucket: REACT_APP_S3_BUCKET,
+      Key: fileName,
+    };
+
+    myBucket
+      .putObject(params)
+      .on("success", (pro) => {
+        setLink(pro?.request?.httpRequest?.stream?.responseURL);
+      })
+      .on("httpUploadProgress", (evt) => {
+        console.log(evt);
+        setProgress(Math.round((evt.loaded / evt.total) * 100));
+      })
+      .send((err) => {
+        if (err) console.log(err);
+      });
+
+    console.log(resumeUploadLink);
+    useEffect(() => {
+      if (progress === 100) {
+        console.log("done");
+      }
+    }, [progress]);
+  };
+  const HandelAddProductData = (e) => {
+    e.preventDefault();
+    const element = e.target.elements;
+
+    const SlotName = element[0].value;
+    const ProductName = element[1].value;
+    const Quantity = element[2].value;
+    const Price = element[3].value;
+    const ProductManufactureDate = element[4].value;
+    const ProductExpiryDate = element[5].value;
+    const category = element[6].value;
+    const imageLink = resumeUploadLink;
+
+    const data = {
+      SlotName: SlotName,
+      ProductName: ProductName,
+      Price: Price,
+      Catogory: category,
+      Quantity: Quantity,
+      ProductManufactureDate: ProductManufactureDate,
+      ProductExpiryDate: ProductExpiryDate,
+      ImageURL: imageLink,
+    };
     dispatch(PostProductInfo(data));
+    console.log(
+      SlotName,
+      ProductName,
+      Quantity,
+      Price,
+      ProductManufactureDate,
+      ProductExpiryDate,
+      category
+    );
+    const { postProductData, PostProductLoading } = useSelector(
+      (state) => state.AddproductInfo
+    );
+
+    if (postProductData.status == 200) {
+      console.log("hi");
+    }
   };
 
   const fields = [
-    ["Slot Name *", "eg. Lays ,haldirams*", "Text"],
+    ["Slot Name *", "eg:1 , 2 ,3 ...", "Number"],
     ["Product Name *", "Product name *", "Text"],
     ["Quantity*", " 0*", "Number"],
     ["Price*", " ₹0", "Number"],
+    ["Mfd", " dd/mm/yyyy", "date"],
+    ["Expirydate", "dd/mm/yyyy", "date"],
   ];
   return (
     <>
       <Navbar />
-      <div className=" flex font-poppins flex-col h-screen  justify-center items-center pt-28 pb-28 bg-gradient-to-b from-[#ffffff5a] via-purple-50 to-pink-200 sm:pt-10 sm:pb-10">
-        <form className=" sl:flex sl:flex-col sl:items-center items-center sm:flex sm:flex-col sm:items-center">
+      <div className=" flex font-poppins flex-col h-screen  justify-center items-center pt-28  bg-gradient-to-b from-[#ffffff5a] via-purple-50 to-pink-200 sm:pt-10 sm:pb-10">
+        <form
+          onSubmit={HandelAddProductData}
+          className=" sl:flex sl:flex-col sl:items-center items-center sm:flex sm:flex-col sm:items-center"
+        >
           <div className=" flex flex-col justify-center items-center w-full">
             <h1 className="text-[42px] font-bold text-stone-600 mb-[10px] md:flex md:justify-center sl:text-[30px] sm:text-[16px]">
               Add Products{" "}
             </h1>
           </div>
-
-          <div className="flex flex-row flex-wrap w-[756px] gap-x-10 mb-[20px] md:justify-center md:gap-x-4 sl:gap-x-0 sl:w-[700px] sl:justify-center sm:gap-x-0 sm:w-screen sm:justify-center ">
+          <div className="flex flex-row flex-wrap w-[756px] gap-x-10 mb-[20px] md:justify-center md:gap-x-4 sl:gap-x-0 sl:w-[700px] sl:justify-center sm:gap-x-0 sm:w-screen sm:justify-center">
             {fields.map((obj, key) => (
               <div
                 key={key}
@@ -50,7 +127,7 @@ const Admin = () => {
                 <input
                   required="true"
                   placeholder={obj[1]}
-                  accept={obj[2]}
+                  type={obj[2]}
                   className="w-[358px] border-2 border-neutral-300 pl-5 h-[53px] rounded-[5px] mb-[35px] sm:w-[250px] sm:h-[40px]"
                 />
               </div>
@@ -64,13 +141,14 @@ const Admin = () => {
                 name="Category"
                 className="w-[358px]  border-2 border-neutral-300 text-slate-600 pl-5 h-[53px] rounded-[5px] bg-white mb-[35px] sm:w-[250px] sm:h-[40px] sm:mb-[10px] "
               >
-                <option value="App development">Lays</option>
+                <option value="Lays">Lays</option>
 
-                <option value="web devlopment">Bingo</option>
-                <option value="ui designer">Haldirams</option>
+                <option value="Bingo">Bingo</option>
+                <option value="Haldirams">Haldirams</option>
               </select>
             </div>
           </div>
+
           <div className="md:flex md:flex-col md:items-center">
             <label className="text-[16px] font-semibold md:w-[600px] sm:text-[9px]">
               Upload image*
@@ -92,10 +170,12 @@ const Admin = () => {
                     />
                   </svg>
                 </span>
+
                 <input
                   type="file"
                   name="file_upload"
                   className="hidden"
+                  onChange={HandelFilePath}
                   accept=".pdf"
                 />
               </label>
@@ -103,10 +183,7 @@ const Admin = () => {
           </div>
 
           <div className="md:flex md:justify-center   ">
-            <button
-              onClick={handlePostProduct}
-              className="bg-gradient-to-b rounded-[5px] from-[#adaee0c3] to-[#e6c9e0af] border-2 border-stone-500 text-black w-[760px] h-[46px] md:w-[400px] sl:w-[300px] sm:text-[9px] sm:w-[150px] sm:h-[30px] "
-            >
+            <button className="bg-gradient-to-b rounded-[5px] from-[#adaee0c3] to-[#e6c9e0af] border-2 border-stone-500 text-black w-[760px] h-[46px] md:w-[400px] sl:w-[300px] sm:text-[9px] sm:w-[150px] sm:h-[30px] ">
               Upload
             </button>
           </div>
