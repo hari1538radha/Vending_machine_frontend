@@ -15,19 +15,22 @@ const Admin = () => {
     const fileName = e.target.files[0].name;
     setFileName(fileName);
 
+    const accessKeyId = process.env.REACT_APP_AWS_ACCESS_KEY_ID;
+    const secretAccessKeys = process.env.REACT_APP_AWS_SECRET_ACCESS_KEY;
+
     AWS.config.update({
-      accessKeyId: REACT_APP_AWS_ACCESS_KEY_ID,
-      secretAccessKey:REACT_APP_AWS_SECRET_ACCESS_KEY
+      accessKeyId: accessKeyId,
+      secretAccessKey:secretAccessKeys
     });
 
     const myBucket = new AWS.S3({
-      params: { Bucket: REACT_APP_S3_BUCKET },
+      params: { Bucket: process.env.REACT_APP_S3_BUCKET },
       region: "eu-west-2",
     });
     const params = {
       ACL: "public-read",
       Body: file,
-      Bucket: REACT_APP_S3_BUCKET,
+      Bucket: process.env.REACT_APP_S3_BUCKET,
       Key: fileName,
     };
 
