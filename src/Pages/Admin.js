@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../Components/Navbar";
+import Navbar from "../Components/reuse comp/Navbar.js";
 import { useSelector, useDispatch } from "react-redux";
 import { PostProductInfo } from "../Store/Slice/PostProductslice";
 import AWS from "aws-sdk";
 const Admin = () => {
   const dispatch = useDispatch();
-
   const [progress, setProgress] = useState(0);
   const [filename, setFileName] = useState();
   const [resumeUploadLink, setLink] = useState("");
@@ -15,8 +14,8 @@ const Admin = () => {
     const fileName = e.target.files[0].name;
     setFileName(fileName);
 
-    const accessKeyId = process.env.REACT_APP_AWS_ACCESS_KEY_ID;
-    const secretAccessKeys = process.env.REACT_APP_AWS_SECRET_ACCESS_KEY;
+    const accessKeyId = "AKIAROT35IHSXDYZ7M7D";
+    const secretAccessKeys = "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";
 
     AWS.config.update({
       accessKeyId: accessKeyId,
@@ -24,7 +23,7 @@ const Admin = () => {
     });
 
     const myBucket = new AWS.S3({
-      params: { Bucket: process.env.REACT_APP_S3_BUCKET },
+      params: { Bucket: "resume-folder" },
       region: "eu-west-2",
     });
     const params = {
