@@ -14,8 +14,8 @@ const Admin = () => {
     const fileName = e.target.files[0].name;
     setFileName(fileName);
 
-    const accessKeyId = "AKIAROT35IHSXDYZ7M7D";
-    const secretAccessKeys = "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";
+    const accessKeyId = "";
+    const secretAccessKeys = "";
 
     AWS.config.update({
       accessKeyId: accessKeyId,

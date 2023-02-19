@@ -1,10 +1,20 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 export const orderSlice = createSlice({
   name: "OrderInfo",
-  initialState: { orders: {yellow:"nfas"} },
+  initialState: { },
   reducers: {
     addItem: (state, action) => {
-      console.log(state);
+      console.log(state)
+        if(current(state)[action.payload]===undefined){
+          const temp ={}
+          temp[action.payload]=1
+          state={...state,...temp}
+        }
+        else{
+          state[action.payload]+=1
+        }
+      console.log(current(state))
+      
       return state;
     },
     removeItem: (state, action) => {
