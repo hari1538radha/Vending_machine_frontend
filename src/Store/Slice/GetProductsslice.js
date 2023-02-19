@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { axio } from "../../Components/Config/Config";
+import { axio } from "../../Components/axios/Config.js";
 
 export const GetProductsInfo = createAsyncThunk("productsinfo", async () => {
   return axio.get("/api/products");
@@ -16,7 +16,7 @@ const products = createSlice({
     },
     [GetProductsInfo.fulfilled]: (state, action) => {
       state.productLoading = false;
-      state.productsData = action.payload;
+      state.productsData = action.payload.data;
     },
     [GetProductsInfo.rejected]: (state, action) => {
       state.productLoading = false;

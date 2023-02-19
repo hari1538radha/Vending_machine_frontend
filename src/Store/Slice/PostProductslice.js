@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import {axio} from "../../Components/Config/Config.js";
+import {axio} from "../../Components/axios/Config.js";
 
 export const PostProductInfo = createAsyncThunk(
   "postporoducts",

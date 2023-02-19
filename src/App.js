@@ -1,7 +1,7 @@
 import FoodList from "./Pages/foodList";
 import Admin from "./Pages/Admin";
 import { Route, Routes } from "react-router-dom";
-import LoginPanel from "./Pages/LoginPanel.js/LoginPanel";
+import LoginPanel from "./Pages/LoginPanel.js";
 
 
 function App() {
@@ -9,9 +9,9 @@ function App() {
     <div>
       
       <Routes>
-        <Route path="/adminlogin" element={<LoginPanel />}></Route>
+        <Route path="/sjfasjfashfkjas" element={<LoginPanel />}></Route>
         <Route path="/" element={<FoodList />} exact></Route>
-        <Route path="/Adminpanel" element={<Admin />}></Route>
+        <Route path="/jasfdlkashfiuashfoas" element={<Admin />}></Route>
       </Routes>
     </div>
   );
