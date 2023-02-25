@@ -7,7 +7,7 @@ import { addItem, removeItem } from "../../../Store/Slice/OrderSlice";
 
 function ItemCard({ props }) {
   const [onClickStyle, setStyle] = useState({});
-  const dispatch=useDispatch()
+  const dispatch = useDispatch()
 
   const onClickHandler = () => {
     if (onClickStyle.transform === undefined) {

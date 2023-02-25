@@ -14,8 +14,8 @@ const Admin = () => {
     const fileName = e.target.files[0].name;
     setFileName(fileName);
 
-    const accessKeyId = "";
-    const secretAccessKeys = "";
+    const accessKeyId =process.env.REACT_APP_AWS_ACCESS_KEY_ID;
+    const secretAccessKeys = process.env.REACT_APP_AWS_SECRET_ACCESS_KEY;
 
     AWS.config.update({
       accessKeyId: accessKeyId,
