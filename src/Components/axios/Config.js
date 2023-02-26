@@ -1,6 +1,6 @@
 import axios from "axios";
 export const axio = axios.create({
-  baseURL: "http://localhost:8002",
+  baseURL: "https://wild-pink-walkingstick-boot.cyclic.app",
   headers: {
     "X-Custom-Header": "foobar",
     Accept: "application/json",
