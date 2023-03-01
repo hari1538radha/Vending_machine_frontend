@@ -10,7 +10,6 @@ function FoodList() {
   const dispatch = useDispatch();
   const Navigate = useNavigate();
   const { data } = useSelector((state) => state.OrderInfo);
-  console.log(data);
   useEffect(() => {
     dispatch(GetProductsInfo());
   }, []);

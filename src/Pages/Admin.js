@@ -16,7 +16,7 @@ const Admin = () => {
     const fileName = e.target.files[0].name;
     setFileName(fileName);
 
-    const accessKeyId =process.env.REACT_APP_AWS_ACCESS_KEY_ID;
+    const accessKeyId = process.env.REACT_APP_AWS_ACCESS_KEY_ID;
     const secretAccessKeys = process.env.REACT_APP_AWS_SECRET_ACCESS_KEY;
 
     AWS.config.update({
@@ -28,7 +28,7 @@ const Admin = () => {
       params: { Bucket: process.env.REACT_APP_S3_BUCKET },
       region: "eu-west-2",
     });
-    
+
     const params = {
       ACL: "public-read",
       Body: file,
