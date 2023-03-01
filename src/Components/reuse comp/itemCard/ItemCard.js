@@ -24,7 +24,7 @@ function ItemCard({ props }) {
   return (
     <div
       className="flip-card w-[18vw] h-[150px] m-1"
-      onClick={()=>{addToCart(props.Id)}}
+     
     >
       <div className="flip-card-inner" style={onClickStyle} onClick={()=>{onClickHandler()}}>
         <div className="flip-card-front bg-green-100 items-center rounded-xl ">
@@ -49,7 +49,7 @@ function ItemCard({ props }) {
               -
             </button>
 
-            <button className="bg-green-500 py-[10px] px-[15px] rounded-md">
+            <button  onClick={()=>{addToCart(props.Id)}} className="bg-green-500 py-[10px] px-[15px] rounded-md">
               +
             </button>
           </div>

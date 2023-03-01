@@ -3,6 +3,8 @@ import Navbar from "../Components/reuse comp/Navbar.js";
 import { useSelector, useDispatch } from "react-redux";
 import { PostProductInfo } from "../Store/Slice/PostProductslice";
 import AWS from "aws-sdk";
+// require('dotenv').config()
+
 const Admin = () => {
   const dispatch = useDispatch();
   const [progress, setProgress] = useState(0);
@@ -23,9 +25,10 @@ const Admin = () => {
     });
 
     const myBucket = new AWS.S3({
-      params: { Bucket: "resume-folder" },
+      params: { Bucket: process.env.REACT_APP_S3_BUCKET },
       region: "eu-west-2",
     });
+    
     const params = {
       ACL: "public-read",
       Body: file,

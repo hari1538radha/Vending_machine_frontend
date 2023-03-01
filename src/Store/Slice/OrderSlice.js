@@ -6,7 +6,7 @@ export const orderSlice = createSlice({
   },
   reducers: {
     addItem: (state, action) => {
-      console.log(current(state))
+      // console.log(current(state))
       state.data.push(action.payload)
         // if(current(state)[action.payload]===undefined){
         //   const temp ={}
