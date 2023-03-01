@@ -7,26 +7,28 @@ import { addItem, removeItem } from "../../../Store/Slice/OrderSlice";
 
 function ItemCard({ props }) {
   const [onClickStyle, setStyle] = useState({});
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const onClickHandler = () => {
-    if (onClickStyle.transform === undefined) {
-      setStyle({ transform: "rotateY(180deg)" });
-    } else {
+    setStyle({ transform: "rotateY(180deg)" });
+    setTimeout(() => {
       setStyle({});
-    }
+    }, 5000);
   };
 
-  const addToCart=(itemId)=>{
-    dispatch(addItem(itemId))
-  }
+  const addToCart = (id, Quantity,Price) => {
+    dispatch(addItem({ id, Quantity,Price }));
+  };
 
   return (
-    <div
-      className="flip-card w-[18vw] h-[150px] m-1"
-      onClick={()=>{addToCart(props.Id)}}
-    >
-      <div className="flip-card-inner" style={onClickStyle} onClick={()=>{onClickHandler()}}>
+    <div className="flip-card w-[18vw] h-[150px] m-1">
+      <div
+        className="flip-card-inner"
+        style={onClickStyle}
+        onClick={() => {
+          onClickHandler();
+        }}
+      >
         <div className="flip-card-front bg-green-100 items-center rounded-xl ">
           <div className="absolute top-[-3%] left-[85%] bg-blue-700 px-[3px] rounded-full text-center">
             0
@@ -37,11 +39,7 @@ function ItemCard({ props }) {
             {props.Price}
           </p>
         </div>
-        <div
-          className="flip-card-back bg-black text-white rounded-xl items-center"
-          onClick={() => {
-          }}
-        >
+        <div className="flip-card-back bg-black text-white rounded-xl items-center">
           <div>50rs</div>
           <div>3/{props.Quantity}</div>
           <div className="flex items-center">
@@ -49,7 +47,12 @@ function ItemCard({ props }) {
               -
             </button>
 
-            <button className="bg-green-500 py-[10px] px-[15px] rounded-md">
+            <button
+              onClick={() => {
+                addToCart(props.Id,props.Quantity,props.Price);
+              }}
+              className="bg-green-500 py-[10px] px-[15px] rounded-md"
+            >
               +
             </button>
           </div>

@@ -1,4 +1,7 @@
+
+// import * as dotenv from 'dotenv';
 import axios from "axios";
+// dotenv.config();
 export const axio = axios.create({
   baseURL: "https://wild-pink-walkingstick-boot.cyclic.app",
   headers: {
