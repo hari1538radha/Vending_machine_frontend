@@ -9,12 +9,13 @@ import ItemCard from "../Components/reuse comp/itemCard/ItemCard";
 function FoodList() {
   const dispatch = useDispatch();
   const Navigate = useNavigate();
-  const { data } = useSelector((state) => state.OrderInfo);
+  const initialState = useSelector((state) => state.OrderInfo);
+  console.log(initialState)
   useEffect(() => {
     dispatch(GetProductsInfo());
   }, []);
   const Checkout = () => {
-    Navigate("/checkout", { state: { data: data } });
+    Navigate("/checkout", { state: { data: initialState } });
   };
   const { productsData, productLoading } = useSelector(
     (state) => state.ProductInfo

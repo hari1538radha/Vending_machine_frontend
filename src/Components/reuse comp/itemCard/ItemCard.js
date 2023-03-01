@@ -16,8 +16,11 @@ function ItemCard({ props }) {
     }, 5000);
   };
 
-  const addToCart = (id, Quantity,Price) => {
-    dispatch(addItem({ id, Quantity,Price }));
+  const addToCart = (id, Quantity, Price) => {
+    dispatch(addItem({ id, Quantity, Price }));
+  };
+  const removeFromCart = (id, Quantity, Price) => {
+    dispatch(removeItem({ id, Quantity, Price }));
   };
 
   return (
@@ -43,13 +46,16 @@ function ItemCard({ props }) {
           <div>50rs</div>
           <div>3/{props.Quantity}</div>
           <div className="flex items-center">
-            <button className="bg-red-500 py-[10px] px-[15px] rounded-md mr-[2px]">
+            <button  onClick={() => {
+                removeFromCart(props.Id, props.Quantity, props.Price);
+              }}
+              className="bg-red-500 py-[10px] px-[15px] rounded-md mr-[2px]">
               -
             </button>
 
             <button
               onClick={() => {
-                addToCart(props.Id,props.Quantity,props.Price);
+                addToCart(props.Id, props.Quantity, props.Price);
               }}
               className="bg-green-500 py-[10px] px-[15px] rounded-md"
             >

@@ -9,7 +9,7 @@ const Checkout = () => {
 
         dispatch(CheckoutProductsInfo(Location.state.data))
      }, [])
-     
+     console.log(Location.state.data)
   return (
     <div>
         Your bill 
