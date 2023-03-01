@@ -17,8 +17,8 @@ function ItemCard({ props }) {
     }
   };
 
-  const addToCart=(itemId)=>{
-    dispatch(addItem(itemId))
+  const addToCart=(id ,Name,Quantity)=>{
+    dispatch(addItem({id,Quantity}))
   }
 
   return (
@@ -49,7 +49,7 @@ function ItemCard({ props }) {
               -
             </button>
 
-            <button  onClick={()=>{addToCart(props.Id)}} className="bg-green-500 py-[10px] px-[15px] rounded-md">
+            <button  onClick={()=>{addToCart(props.Id,props.ProductName,props.Quantity)}} className="bg-green-500 py-[10px] px-[15px] rounded-md">
               +
             </button>
           </div>
