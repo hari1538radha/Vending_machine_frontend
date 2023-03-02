@@ -1,7 +1,8 @@
 import React,{useEffect} from 'react'
 import { useLocation } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
-import { CheckoutProductsInfo } from '../../Store/Slice/CheckoutSlice';
+import { CheckoutProductsInfo } from '../Store/Slice/CheckoutSlice';
+
 const Checkout = () => {
     const dispatch = useDispatch()
      const Location = useLocation();

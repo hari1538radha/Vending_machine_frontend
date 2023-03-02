@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-import { axio } from "../../Components/axios/Config.js";
+import { axio } from "../../Config/Config";
 
 export const Login = createAsyncThunk("login", async (data) => {
   return axio.post(`/api/login`,data);

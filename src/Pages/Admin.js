@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../Components/reuse comp/Navbar.js";
+import Navbar from "../Components/Navbar";
 import { useSelector, useDispatch } from "react-redux";
 import { PostProductInfo } from "../Store/Slice/PostProductslice";
 import AWS from "aws-sdk";
