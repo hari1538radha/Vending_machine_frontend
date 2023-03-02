@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { axio } from "../../Components/axios/Config.js";
+import { axio } from "../../Config/Config";;
 
 export const CheckoutProductsInfo = createAsyncThunk("productsinfo", async () => {
     return axio.get("/api/cart");

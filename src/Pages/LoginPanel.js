@@ -1,8 +1,7 @@
-import React from "react";
-import { useEffect, useState } from "react";
-import Navbar from "../Components/reuse comp/Navbar.js";
+import React,{useState,useEffect} from "react";
+import Navbar from "../Components/Navbar";
 import { Link } from "react-router-dom";
-import { Login } from "../Store/Slice/Login";
+import { Login } from "../Redux/Slice/Login";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 

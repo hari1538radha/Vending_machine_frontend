@@ -1,7 +1,7 @@
 import FoodList from "./Pages/foodList";
 import Admin from "./Pages/Admin";
 import LoginPanel from "./Pages/LoginPanel.js";
-import Checkout from "./Components/reuse comp/Checkout";
+import Checkout from "./Components/Checkout";
 
 import { Route, Routes } from "react-router-dom";
 

@@ -1,9 +1,9 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import productDetails from "./Slice/GetProductsslice";
-import PostproductData from "./Slice/PostProductslice";
-import LoginDetails from "./Slice/Login";
-import OrderSlice from "./Slice/OrderSlice";
-import checkoutProductDetails from "./Slice/CheckoutSlice";
+import productDetails from "../Slice/GetProductsslice";
+import PostproductData from "../Slice/PostProductslice";
+import LoginDetails from "../Slice/Login";
+import OrderSlice from "../Slice/OrderSlice";
+import checkoutProductDetails from "../Slice/CheckoutSlice";
 
 
 const rootReducer = combineReducers({

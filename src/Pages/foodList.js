@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 //redux
 import { useDispatch, useSelector } from "react-redux";
-import { GetProductsInfo } from "../Store/Slice/GetProductsslice";
+import { GetProductsInfo } from "../Redux/Slice/GetProductsslice";
 
 //reuse comp
-import ItemCard from "../Components/reuse comp/itemCard/ItemCard";
+import ItemCard from "../Components/itemCard/ItemCard";
 function FoodList() {
   const dispatch = useDispatch();
   const Navigate = useNavigate();

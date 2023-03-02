@@ -3,7 +3,7 @@ import "./itemcard.css";
 
 //redux
 import { useDispatch } from "react-redux";
-import { addItem, removeItem } from "../../../Store/Slice/OrderSlice";
+import { addItem, removeItem } from "../../Redux/Slice/OrderSlice";
 
 function ItemCard({ props }) {
   const [onClickStyle, setStyle] = useState({});
