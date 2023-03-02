@@ -24,7 +24,7 @@ function ItemCard({ props }) {
   };
 
   return (
-    <div className="flip-card w-[18vw] h-[150px] m-1">
+    <div className="flip-card w-[18vw] h-[23vh] m-1">
       <div
         className="flip-card-inner"
         style={onClickStyle}
@@ -49,7 +49,7 @@ function ItemCard({ props }) {
             <button  onClick={() => {
                 removeFromCart(props.Id, props.Quantity, props.Price);
               }}
-              className="bg-red-500 py-[10px] px-[15px] rounded-md mr-[2px]">
+              className="bg-red-500 py-[10px] px-[9.2px] rounded-md mr-2">
               -
             </button>
 
@@ -57,7 +57,7 @@ function ItemCard({ props }) {
               onClick={() => {
                 addToCart(props.Id, props.Quantity, props.Price);
               }}
-              className="bg-green-500 py-[10px] px-[15px] rounded-md"
+              className="bg-green-500 py-[10px] px-2  rounded-md"
             >
               +
             </button>
