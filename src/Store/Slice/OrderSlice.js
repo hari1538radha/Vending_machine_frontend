@@ -1,5 +1,5 @@
 import { createSlice, current } from "@reduxjs/toolkit";
-// const initialState = [];
+
 export const orderSlice = createSlice({
   name: "OrderInfo",
   initialState: [],
@@ -14,7 +14,7 @@ export const orderSlice = createSlice({
           if (item.id === id) {
             return {
               ...item,
-              quantity: item.quantity + 1,
+              Order: item.Order + 1,
             };
           }
 
@@ -23,7 +23,7 @@ export const orderSlice = createSlice({
       } else {
         state.push({
           ...payload,
-          quantity: 1,
+          Order: 1,
         });
       }
     },
@@ -31,12 +31,12 @@ export const orderSlice = createSlice({
       const { id } = payload;
       return state.map((item) => {
         if (item.id === id) {
-          if (item.quantity === 0) {
-           console.log(state.indexOf(id)) 
+          if (item.quantity < 1) {
+            console.log(current(item), "item is removed");
           } else {
             return {
               ...item,
-              quantity: item.quantity - 1,
+              Order: item.Order - 1,
             };
           }
         }
