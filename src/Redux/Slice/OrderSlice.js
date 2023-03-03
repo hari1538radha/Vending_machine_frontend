@@ -2,46 +2,35 @@ import { createSlice, current } from "@reduxjs/toolkit";
 
 export const orderSlice = createSlice({
   name: "OrderInfo",
-  initialState: [],
+  initialState: { orders: {}, total: 0 },
 
   reducers: {
     addItem: (state, { payload }) => {
-      const { id } = payload;
-
-      const doesItemExist = state.find((item) => item.id === id);
-      if (doesItemExist) {
-        return state.map((item) => {
-          if (item.id === id) {
-            return {
-              ...item,
-              Order: item.Order + 1,
-            };
-          }
-
-          return item;
-        });
-      } else {
-        state.push({
-          ...payload,
-          Order: 1,
-        });
+      const { id, Quantity, Price } = payload;
+      if (!Quantity) {
+        return state;
       }
+      if (state.orders[id]) {
+        if (state.orders[id].orderedQuantity >= Quantity) {
+          return state;
+        }
+        state.orders[id].orderedQuantity = state.orders[id].orderedQuantity + 1;
+        state.total = state.total + Price;
+      } else {
+        state.orders[id] = { orderedQuantity: 0, availableQuantity: Quantity };
+        state.total = state.total + Price;
+
+      }
+      return state;
     },
     removeItem: (state, { payload }) => {
-      const { id } = payload;
-      return state.map((item) => {
-        if (item.id === id) {
-          if (item.quantity < 1) {
-            console.log(current(item), "item is removed");
-          } else {
-            return {
-              ...item,
-              Order: item.Order - 1,
-            };
-          }
-        }
-        return item;
-      });
+      const { id, Quantity, Price } = payload;
+      if (state.orders[id]?.availableQuantity > 0) {
+        state.orders[id].availableQuantity =
+          state.orders[id].availableQuantity - 1;
+        state.total = state.total - Price;
+      }
+      return state;
     },
   },
 });

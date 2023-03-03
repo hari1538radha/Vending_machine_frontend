@@ -43,17 +43,13 @@ const Admin = () => {
           setLink(pro?.request?.httpRequest?.stream?.responseURL);
       })
       .on("httpUploadProgress", (evt) => {
-        console.log(evt);
         setProgress(Math.round((evt.loaded / evt.total) * 100));
       })
       .send((err) => {
-        if (err) console.log(err);
       });
 
-    console.log(resumeUploadLink);
     useEffect(() => {
       if (progress === 100) {
-        console.log("done");
       }
     }, [progress]);
   };
@@ -81,21 +77,12 @@ const Admin = () => {
       ImageURL: imageLink,
     };
     dispatch(PostProductInfo(data));
-    console.log(
-      SlotName,
-      ProductName,
-      Quantity,
-      Price,
-      ProductManufactureDate,
-      ProductExpiryDate,
-      category
-    );
+   
     const { postProductData, PostProductLoading } = useSelector(
       (state) => state.AddproductInfo
     );
 
     if (postProductData.status == 200) {
-      console.log("hi");
     }
   };
 

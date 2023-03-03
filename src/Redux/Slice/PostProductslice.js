@@ -9,13 +9,14 @@ export const PostProductInfo = createAsyncThunk(
 );
 
 const AddProduct = createSlice({
-  name: "postporoducts",
+  name: "postproducts",
   initialState: {
     postProductData: [],
     PostProductLoading: true,
   },
   extraReducers: {
     [PostProductInfo.pending]: (state, action) => {
+      console.log("..........")
       state.PostProductLoading = true;
     },
     [PostProductInfo.fulfilled]: (state, action) => {
