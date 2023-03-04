@@ -35,13 +35,14 @@ function FoodList() {
     <div>
       {" "}
       {productLoading ? (
-        <div className="grid w-screen h-screen place-items-center">
+        <div className="grid w-screen h-1/2 place-items-center mt-[30vh]">
+          <div>Stocking Shelves</div>
+
           <Lottie
             animationData={Loader}
             loop={true}
             className="w-[60vw] h-[40vh]"
           />
-          <div>Stocking Shelves</div>
         </div>
       ) : (
         <div className="border-[5px] border-black h-screen">
