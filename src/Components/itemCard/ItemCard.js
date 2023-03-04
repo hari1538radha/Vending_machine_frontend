@@ -10,10 +10,12 @@ function ItemCard({ props }) {
   const dispatch = useDispatch();
 
   const onClickHandler = () => {
-    setStyle({ transform: "rotateY(180deg)" });
-    setTimeout(() => {
-      setStyle({});
-    }, 5000);
+    if (onClickStyle.transform == undefined) {
+      setStyle({ transform: "rotateY(180deg)" });
+      setTimeout(() => {
+        setStyle({});
+      }, 5000);
+    }
   };
 
   const addToCart = (id, Quantity, Price) => {
@@ -46,10 +48,12 @@ function ItemCard({ props }) {
           <div>50rs</div>
           <div>3/{props.Quantity}</div>
           <div className="flex items-center">
-            <button  onClick={() => {
+            <button
+              onClick={() => {
                 removeFromCart(props.Id, props.Quantity, props.Price);
               }}
-              className="bg-red-500 py-[10px] px-[9.2px] rounded-md mr-2">
+              className="bg-red-500 py-[10px] px-[9.2px] rounded-md mr-2"
+            >
               -
             </button>
 

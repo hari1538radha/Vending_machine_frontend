@@ -12,12 +12,10 @@ const LoginPanel = () => {
   const [flag, setFlag] = useState(0);
 
   const { LoginData, LoginLoading } = useSelector((state) => state.LoginInfo);
-  console.log(LoginData);
   const handelLogin = (e) => {
     e.preventDefault();
     const AdminName = e.target.elements[0].value;
     const Password = e.target.elements[1].value;
-    console.log(AdminName, Password);
     dispatch(Login({ AdminName, Password }));
     setFlag(1);
   };

@@ -6,6 +6,7 @@ import OrderSlice from "../Slice/OrderSlice";
 import checkoutProductDetails from "../Slice/CheckoutSlice";
 
 
+
 const rootReducer = combineReducers({
   ProductInfo: productDetails,
   AddproductInfo: PostproductData,
@@ -15,5 +16,7 @@ const rootReducer = combineReducers({
 });
 const Store = configureStore({
   reducer: rootReducer,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
+
 });
 export default Store;
