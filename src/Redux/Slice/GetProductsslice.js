@@ -15,7 +15,7 @@ const products = createSlice({
       state.productLoading = true;
     },
     [GetProductsInfo.fulfilled]: (state, action) => {
-      state.productLoading = false;
+      state.productLoading = true;
       state.productsData = action.payload.data;
     },
     [GetProductsInfo.rejected]: (state, action) => {
