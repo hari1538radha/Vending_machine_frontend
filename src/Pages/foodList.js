@@ -34,7 +34,7 @@ function FoodList() {
   return (
     <div>
       {" "}
-      {productLoading ? (
+      {productLoading  ==  true? (
         <div className="grid w-screen h-1/2 place-items-center mt-[30vh]">
           <div>Stocking Shelves</div>
 
