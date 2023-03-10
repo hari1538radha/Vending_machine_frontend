@@ -11,24 +11,22 @@ export const orderSlice = createSlice({
         return state;
       }
       if (state.orders[id]) {
-        if (state.orders[id].orderedQuantity >= Quantity) {
+        if (state.orders[id] >= Quantity) {
           return state;
         }
-        state.orders[id].orderedQuantity = state.orders[id].orderedQuantity + 1;
+        state.orders[id] = state.orders[id] + 1;
         state.total = state.total + Price;
       } else {
-        state.orders[id] = { orderedQuantity: 0, availableQuantity: Quantity };
+        state.orders[id] = 1;
         state.total = state.total + Price;
-
       }
       console.log(current(state))
       return state;
     },
     removeItem: (state, { payload }) => {
-      const { id, Quantity, Price } = payload;
-      if (state.orders[id]?.availableQuantity > 0) {
-        state.orders[id].availableQuantity =
-          state.orders[id].availableQuantity - 1;
+      const { id, Price } = payload;
+      if (state.orders[id] && state.orders[id] > 0) {
+        state.orders[id] = state.orders[id] - 1;
         state.total = state.total - Price;
       }
       return state;

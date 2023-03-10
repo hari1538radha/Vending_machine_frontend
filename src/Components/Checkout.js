@@ -10,18 +10,12 @@ import Loader from "../Assests/loader.json";
 const Checkout = () => {
   const dispatch = useDispatch();
   const Location = useLocation();
-  console.log( Object.fromEntries(
-    Object.entries(Location.state.data).filter(
-      ([key, value]) => value.orderedQuantity > 0
-    )
-  ))
-
   useEffect(() => {
     dispatch(
       CheckoutProductsInfo(
         Object.fromEntries(
           Object.entries(Location.state.data).filter(
-            ([key, value]) => value.orderedQuantity > 0
+            ([key, value]) => value > 0
           )
         )
       )
@@ -29,16 +23,18 @@ const Checkout = () => {
   }, []);
 
   const { productLoading } = useSelector((state) => state.CheckOutInfo);
+
   return (
     <div>
       {productLoading ? (
-        <div className="grid w-screen h-screen place-items-center">
+        <div className="grid w-screen h-1/2 place-items-center mt-[30vh]">
+          <div className="text-xl">Checking Avilability</div>
+
           <Lottie
             animationData={Loader}
             loop={true}
             className="w-[60vw] h-[40vh]"
           />
-          <div>Checking Avilability</div>
         </div>
       ) : (
         <div>not loading</div>
