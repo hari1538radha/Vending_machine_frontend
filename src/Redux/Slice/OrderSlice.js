@@ -21,6 +21,7 @@ export const orderSlice = createSlice({
         state.total = state.total + Price;
 
       }
+      console.log(current(state))
       return state;
     },
     removeItem: (state, { payload }) => {

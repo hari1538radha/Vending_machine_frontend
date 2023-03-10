@@ -34,7 +34,7 @@ function FoodList() {
   return (
     <div>
       {" "}
-      {productLoading ? (
+      {productLoading  ==  true? (
         <div className="grid w-screen h-screen place-items-center">
           <Lottie
             animationData={Loader}
