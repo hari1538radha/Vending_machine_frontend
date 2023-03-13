@@ -46,7 +46,7 @@ function FoodList() {
         </div>
       ) : (
         <div className="border-[5px] border-black h-screen">
-          <div className="m-[20px] text-center">Grab a snack</div>
+          <div className="m-[20px] text-center text-4xl">Grab a snack</div>
           <div>
             {productsData.length &&
               productsData.map((rows) => (
@@ -67,12 +67,14 @@ function FoodList() {
                 </div>
               ))}
           </div>
+          <div className="flex items-center  justify-center mt-[30px]">
           <button
             onClick={Checkout}
-            className="bg-blue-700 p-[10px] rounded-xl"
+            className="bg-blue-700 p-[10px] rounded-xl "
           >
-            Checkout {totalPrice}
+            Checkout <span>&#8377;</span>{totalPrice}
           </button>
+          </div>
         </div>
       )}
     </div>
