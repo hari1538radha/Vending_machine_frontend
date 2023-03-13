@@ -20,6 +20,7 @@ export const orderSlice = createSlice({
         state.orders[id] = 1;
         state.total = state.total + Price;
       }
+      console.log(current(state))
       return state;
     },
     removeItem: (state, { payload }) => {
