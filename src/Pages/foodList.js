@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 import { GetProductsInfo } from "../Redux/Slice/GetProductsslice";
-
+import { CheckoutProductsInfo } from "../Redux/Slice/CheckoutSlice";
 //reuse comp
 import ItemCard from "../Components/itemCard/ItemCard";
 
@@ -34,7 +34,7 @@ function FoodList() {
   return (
     <div>
       {" "}
-      {productLoading  ==  true? (
+      {productLoading === true ? (
         <div className="grid w-screen h-1/2 place-items-center mt-[30vh]">
           <div>Stocking Shelves</div>
 
@@ -68,12 +68,13 @@ function FoodList() {
               ))}
           </div>
           <div className="flex items-center  justify-center mt-[30px]">
-          <button
-            onClick={Checkout}
-            className="bg-blue-700 p-[10px] rounded-xl "
-          >
-            Checkout <span>&#8377;</span>{totalPrice}
-          </button>
+            <button
+              onClick={Checkout}
+              className="bg-blue-700 p-[10px] rounded-xl "
+            >
+              Checkout <span>&#8377;</span>
+              {totalPrice}
+            </button>
           </div>
         </div>
       )}
